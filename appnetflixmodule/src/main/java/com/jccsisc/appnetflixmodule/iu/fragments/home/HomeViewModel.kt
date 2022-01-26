@@ -11,12 +11,39 @@ import com.jccsisc.appnetflixmodule.iu.fragments.home.model.HomeListMoviesRespon
 class HomeViewModel: ViewModel() {
 
     private val interactor = HomeInteractor()
-    val responseListMovies: GenericRequest<GenericResponse<HomeListMoviesResponse, String, RequestModel<Void>>> = GenericRequest()
+    val responseListMoviesPopular: GenericRequest<GenericResponse<HomeListMoviesResponse, String, RequestModel<Void>>> = GenericRequest()
+    val responseListMoviesUpcoming: GenericRequest<GenericResponse<HomeListMoviesResponse, String, RequestModel<Void>>> = GenericRequest()
+    val responseListMoviesTop: GenericRequest<GenericResponse<HomeListMoviesResponse, String, RequestModel<Void>>> = GenericRequest()
+    val responseListMoviesNowPopular: GenericRequest<GenericResponse<HomeListMoviesResponse, String, RequestModel<Void>>> = GenericRequest()
 
-    fun requestData(path: String, requestModel: RequestModel<Void>) {
-        responseListMovies.postValue(GenericResponse(StatusRequestEnum.LOADING, requestData = requestModel))
-        interactor.getListMovies( path, requestModel) {
-            responseListMovies.postValue(
+    fun requestDataUpcoming(path: String, requestModel: RequestModel<Void>) {
+        responseListMoviesPopular.postValue(GenericResponse(StatusRequestEnum.LOADING, requestData = requestModel))
+        interactor.getListMoviesUpcoming( path, requestModel) {
+            responseListMoviesUpcoming.postValue(
+                it
+            )
+        }
+    }
+    fun requestDataPopular(path: String, requestModel: RequestModel<Void>) {
+        responseListMoviesPopular.postValue(GenericResponse(StatusRequestEnum.LOADING, requestData = requestModel))
+        interactor.getListMoviesPopulars( path, requestModel) {
+            responseListMoviesPopular.postValue(
+                it
+            )
+        }
+    }
+    fun requestDataTop(path: String, requestModel: RequestModel<Void>) {
+        responseListMoviesPopular.postValue(GenericResponse(StatusRequestEnum.LOADING, requestData = requestModel))
+        interactor.getListMoviesTop( path, requestModel) {
+            responseListMoviesTop.postValue(
+                it
+            )
+        }
+    }
+    fun requestDataNowPlaying(path: String, requestModel: RequestModel<Void>) {
+        responseListMoviesPopular.postValue(GenericResponse(StatusRequestEnum.LOADING, requestData = requestModel))
+        interactor.getListMoviesNowPlaying( path, requestModel) {
+            responseListMoviesNowPopular.postValue(
                 it
             )
         }

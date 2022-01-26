@@ -11,8 +11,9 @@ import com.jccsisc.moviesmodule.common.MMEnumsURL
 import retrofit2.Call
 
 class HomeRepositoryRemote : HomeSource {
-    override fun getListMovies(
-        paht: String,
+
+    override fun getListMoviesPopulars(
+        path: String,
         requestModel: RequestModel<Void>,
         observer: Observer<GenericResponse<HomeListMoviesResponse, String, RequestModel<Void>>>
     ) {
@@ -21,7 +22,55 @@ class HomeRepositoryRemote : HomeSource {
 
         ValidResponse(observer, requestModel, HomeListMoviesResponse::class).validationMethod(
             initService.getExecuteServiceMovies(
-                paht,
+                path,
+                MMEnumsURL.API_KEY.url
+            )
+        )
+    }
+
+    override fun getListMoviesUpcoming(
+        path: String,
+        requestModel: RequestModel<Void>,
+        observer: Observer<GenericResponse<HomeListMoviesResponse, String, RequestModel<Void>>>
+    ) {
+        val initService: InitServices<Void, Call<HomeListMoviesResponse>> =
+            InitServices(BuildConfig.BASE_URL)
+
+        ValidResponse(observer, requestModel, HomeListMoviesResponse::class).validationMethod(
+            initService.getExecuteServiceMovies(
+                path,
+                MMEnumsURL.API_KEY.url
+            )
+        )
+    }
+
+    override fun getListMoviesTop(
+        path: String,
+        requestModel: RequestModel<Void>,
+        observer: Observer<GenericResponse<HomeListMoviesResponse, String, RequestModel<Void>>>
+    ) {
+        val initService: InitServices<Void, Call<HomeListMoviesResponse>> =
+            InitServices(BuildConfig.BASE_URL)
+
+        ValidResponse(observer, requestModel, HomeListMoviesResponse::class).validationMethod(
+            initService.getExecuteServiceMovies(
+                path,
+                MMEnumsURL.API_KEY.url
+            )
+        )
+    }
+
+    override fun getListMoviesNowPlaying(
+        path: String,
+        requestModel: RequestModel<Void>,
+        observer: Observer<GenericResponse<HomeListMoviesResponse, String, RequestModel<Void>>>
+    ) {
+        val initService: InitServices<Void, Call<HomeListMoviesResponse>> =
+            InitServices(BuildConfig.BASE_URL)
+
+        ValidResponse(observer, requestModel, HomeListMoviesResponse::class).validationMethod(
+            initService.getExecuteServiceMovies(
+                path,
                 MMEnumsURL.API_KEY.url
             )
         )

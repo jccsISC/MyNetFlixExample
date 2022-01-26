@@ -15,4 +15,5 @@
     <string name="on_item_click_listener">onItemClickListener no inicializado</string>
 
     <string name="url_img">https://image.tmdb.org/t/p/w500/%s</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAe88CMEDZSzUJq28_ayfp8QSib8jbp8qI</string>
 </resources>

@@ -1,38 +1,33 @@
 package com.jccsisc.appnetflixmodule.iu.fragments.home
 
-import androidx.activity.OnBackPressedCallback
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.jccsisc.appnetflixmodule.R
 import com.jccsisc.appnetflixmodule.common.core.request.RequestModel
+import com.jccsisc.appnetflixmodule.common.core.response.GenericResponse
 import com.jccsisc.appnetflixmodule.common.core.status.StatusRequestEnum
 import com.jccsisc.appnetflixmodule.iu.fragments.home.adapter.HomeAdapter
-import com.jccsisc.appnetflixmodule.utils.ConstantesObject.estreno
 import com.jccsisc.appnetflixmodule.utils.ConstantesObject.now_playing
+import com.jccsisc.appnetflixmodule.utils.ConstantesObject.upcoming
 import com.jccsisc.appnetflixmodule.utils.ConstantesObject.popular
 import com.jccsisc.appnetflixmodule.utils.ConstantesObject.top
 import com.jccsisc.appnetflixmodule.utils.DialogObject
 import com.jccsisc.appnetflixmodule.utils.showToast
 import com.jccsisc.appnetflixmodule.utils.showView
-import kotlin.random.Random
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 fun HomeFragment.initElements() {
     mBinding.apply {
 
-        viewModel.requestData(estreno, RequestModel())
-        /*viewModel.requestData(popular, RequestModel())
-        viewModel.requestData(top, RequestModel())
-        viewModel.requestData(now_playing, RequestModel())*/
+        viewModel.requestDataUpcoming(upcoming, RequestModel())
 
         imgFavorite.setOnClickListener {
             showToast("Agregar a favoritos")
         }
 
         btnPlay.setOnClickListener {
-            viewModel.requestData(estreno, RequestModel())
+            viewModel.requestDataUpcoming(upcoming, RequestModel())
+            shimmerFrameLayout.showView()
+            shimmerFrameLayout.showShimmer(true)
+            layoutRv.showView(false)
         }
 
         imgInformation.setOnClickListener {
@@ -64,20 +59,17 @@ fun HomeFragment.initElements() {
 
 fun HomeFragment.initObserverMovies() {
     mBinding.apply {
-        viewModel.responseListMovies.observe(viewLifecycleOwner, { data ->
+
+        viewModel.responseListMoviesUpcoming.observe(viewLifecycleOwner, { data ->
             when (data.statusRequest) {
-                StatusRequestEnum.LOADING -> shimmerFrameLayout.showShimmer(true)
                 StatusRequestEnum.SUCCESS -> {
                     data.successData?.let { it ->
-                        shimmerFrameLayout.showView(false)
-                        shimmerFrameLayout.stopShimmer()
-                        layoutRv.showView()
+                        /* shimmerFrameLayout.showView(false)
+                         shimmerFrameLayout.stopShimmer()
+                         layoutRv.showView()*/
 
                         val adapter = HomeAdapter()
-                        rvPremiere.adapter = adapter
-                        rvPopular.adapter = adapter
-                        rvTop.adapter = adapter
-                        rvNowPlaying.adapter = adapter
+                        rvUpcoming.adapter = adapter
 
                         val imageRandom = it.listMovies.random().poster_path
 
@@ -85,6 +77,132 @@ fun HomeFragment.initObserverMovies() {
                             .load(root.context.getString(R.string.url_img, imageRandom))
                             .centerCrop()
                             .into(mBinding.imgHome)
+
+                        adapter.submitList(it.listMovies)
+
+                        viewModel.requestDataPopular(popular, RequestModel())
+
+                        adapter.onItemClickListener = { movie ->
+                            showToast("Click")
+                            /* val action =
+                                 MMenuFragmentDirections.actionMMenuFragmentToMDetailsFragment2(
+                                     movie
+                                 )
+                             findNavController().navigate(action)*/
+                        }
+                        viewModel.responseListMoviesUpcoming.postValue(GenericResponse(StatusRequestEnum.NONE, requestData = RequestModel()))
+                    }
+                }
+                StatusRequestEnum.FAILURE -> {
+                    shimmerFrameLayout.showView(false)
+                    shimmerFrameLayout.stopShimmer()
+
+                    data.errorData?.let {
+                        DialogObject.showDialog(requireActivity(), it)
+                    }
+                }
+                StatusRequestEnum.NONE -> {
+                    shimmerFrameLayout.showShimmer(false)
+                    shimmerFrameLayout.stopShimmer()
+                }
+            }
+        })
+
+        viewModel.responseListMoviesPopular.observe(viewLifecycleOwner, { data ->
+            when (data.statusRequest) {
+//                StatusRequestEnum.LOADING -> shimmerFrameLayout.showShimmer(true)
+                StatusRequestEnum.SUCCESS -> {
+                    data.successData?.let { it ->
+                        /*shimmerFrameLayout.showView(false)
+                        shimmerFrameLayout.stopShimmer()
+                        layoutRv.showView()*/
+
+                        val adapter = HomeAdapter()
+                        rvPopular.adapter = adapter
+
+                        adapter.submitList(it.listMovies)
+
+                        viewModel.requestDataTop(top, RequestModel())
+
+                        adapter.onItemClickListener = { movie ->
+                            showToast("Click")
+                            /* val action =
+                                 MMenuFragmentDirections.actionMMenuFragmentToMDetailsFragment2(
+                                     movie
+                                 )
+                             findNavController().navigate(action)*/
+                        }
+                        viewModel.responseListMoviesPopular.postValue(GenericResponse(StatusRequestEnum.NONE, requestData = RequestModel()))
+                    }
+                }
+                StatusRequestEnum.FAILURE -> {
+                    shimmerFrameLayout.showView(false)
+                    shimmerFrameLayout.stopShimmer()
+
+                    data.errorData?.let {
+                        DialogObject.showDialog(requireActivity(), it)
+                    }
+                }
+                StatusRequestEnum.NONE -> {
+                    shimmerFrameLayout.showShimmer(false)
+                    shimmerFrameLayout.stopShimmer()
+                }
+            }
+        })
+
+        viewModel.responseListMoviesTop.observe(viewLifecycleOwner, { data ->
+            when (data.statusRequest) {
+//                StatusRequestEnum.LOADING -> shimmerFrameLayout.showShimmer(true)
+                StatusRequestEnum.SUCCESS -> {
+                    data.successData?.let { it ->
+                        /*shimmerFrameLayout.showView(false)
+                        shimmerFrameLayout.stopShimmer()
+                        layoutRv.showView()*/
+
+                        val adapter = HomeAdapter()
+                        rvTop.adapter = adapter
+
+                        adapter.submitList(it.listMovies)
+
+                        viewModel.requestDataNowPlaying(now_playing, RequestModel())
+
+                        adapter.onItemClickListener = { movie ->
+                            showToast("Click")
+                            /* val action =
+                                 MMenuFragmentDirections.actionMMenuFragmentToMDetailsFragment2(
+                                     movie
+                                 )
+                             findNavController().navigate(action)*/
+                        }
+                        viewModel.responseListMoviesTop.postValue(GenericResponse(StatusRequestEnum.NONE, requestData = RequestModel()))
+                    }
+                }
+                StatusRequestEnum.FAILURE -> {
+                    shimmerFrameLayout.showView(false)
+                    shimmerFrameLayout.stopShimmer()
+
+                    data.errorData?.let {
+                        DialogObject.showDialog(requireActivity(), it)
+                    }
+                }
+                StatusRequestEnum.NONE -> {
+                    shimmerFrameLayout.showShimmer(false)
+                    shimmerFrameLayout.stopShimmer()
+                }
+            }
+        })
+
+        viewModel.responseListMoviesNowPopular.observe(viewLifecycleOwner, { data ->
+            when (data.statusRequest) {
+//                StatusRequestEnum.LOADING -> shimmerFrameLayout.showShimmer(true)
+                StatusRequestEnum.SUCCESS -> {
+                    data.successData?.let { it ->
+                        shimmerFrameLayout.showView(false)
+                        shimmerFrameLayout.stopShimmer()
+                        layoutRv.showView()
+
+                        val adapter = HomeAdapter()
+                        rvNowPlaying.adapter = adapter
 
                         adapter.submitList(it.listMovies)
 
@@ -96,6 +214,7 @@ fun HomeFragment.initObserverMovies() {
                                  )
                              findNavController().navigate(action)*/
                         }
+                        viewModel.responseListMoviesNowPopular.postValue(GenericResponse(StatusRequestEnum.NONE, requestData = RequestModel()))
                     }
                 }
                 StatusRequestEnum.FAILURE -> {

@@ -8,7 +8,7 @@ object ConstantesObject {
     const val korean = "Koreano"
 
     const val popular = "popular"
-    const val estreno = "upcoming"
+    const val upcoming = "upcoming"
     const val top = "top_rated"
     const val now_playing = "now_playing"
 }

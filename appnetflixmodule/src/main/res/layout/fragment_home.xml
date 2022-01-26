@@ -77,12 +77,17 @@
                        android:id="@+id/btnPlay"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="@string/label_play"
+                       android:text="Actualizar"
+                       android:clickable="true"
+                       android:textAllCaps="true"
+                       android:foreground="?selectableItemBackgroundBorderless"
                        android:backgroundTint="@color/gray_litte"
-                       android:drawableStart="@drawable/ic_play"
+                       android:drawableLeft="@drawable/ic_play"
+                       android:drawablePadding="5dp"
                        app:layout_constraintBottom_toBottomOf="parent"
                        app:layout_constraintEnd_toEndOf="parent"
-                       app:layout_constraintStart_toStartOf="parent"/>
+                       app:layout_constraintStart_toStartOf="parent"
+                       android:focusable="true" />
 
                    <LinearLayout
                        android:layout_width="wrap_content"
@@ -124,6 +129,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
+                android:background="#A1000000"
                 app:layout_collapseMode="pin">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -271,7 +277,7 @@
                    android:layout_marginBottom="5dp"
                    style="@style/tvStyle"/>
                <androidx.recyclerview.widget.RecyclerView
-                   android:id="@+id/rvPremiere"
+                   android:id="@+id/rvUpcoming"
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

@@ -5,56 +5,41 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.jccsisc.appnetflixmodule.R
+import com.jccsisc.appnetflixmodule.databinding.FragmentMapsBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MapsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class MapsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    lateinit var mBinding: FragmentMapsBinding
+    lateinit var map: GoogleMap
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        mBinding = FragmentMapsBinding.bind(view)
+        super.onViewCreated(mBinding.root, savedInstanceState)
+        mBinding.apply {
+            createFragment()
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_maps, container, false)
+    private fun createFragment() {
+        val mapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MapsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MapsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onMapReady(googleMap: GoogleMap) {
+        map = googleMap
+        createMarker()
+    }
+
+    private fun createMarker() {
+        val coordinates = LatLng(28.043893, -16.539329)
+        val marker = MarkerOptions().position(coordinates).title("Playa")
+        map.addMarker(marker)
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(coordinates, 17.3f), 3000, null)
     }
 }

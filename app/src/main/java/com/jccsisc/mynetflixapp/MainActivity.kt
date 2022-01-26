@@ -3,8 +3,10 @@ package com.jccsisc.mynetflixapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.jccsisc.appnetflixmodule.iu.fragments.maps.MapsFragment
 import com.jccsisc.mynetflixapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +26,17 @@ class MainActivity : AppCompatActivity() {
             val navController = navHostFragment.navController
 
             boottomNavigatioView.setupWithNavController(navController)
+
+            navController.addOnDestinationChangedListener { _, destination, _ ->
+                when(destination.id) {
+                    R.id.mapsFragment -> {
+                        boottomNavigatioView.setBackgroundColor(ContextCompat.getColor(this@MainActivity, R.color.bg_maps))
+                    }
+                    else -> {
+                        boottomNavigatioView.setBackgroundColor(ContextCompat.getColor(this@MainActivity, R.color.primary_color))
+                    }
+                }
+            }
 
         }
     }
