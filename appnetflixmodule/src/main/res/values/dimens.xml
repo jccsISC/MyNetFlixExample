@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_ic_home">30dp</dimen>
+    <dimen name="size_12">12sp</dimen>
+    <dimen name="padding_5">5dp</dimen>
+    <dimen name="corner_radius_10">10dp</dimen>
+</resources>

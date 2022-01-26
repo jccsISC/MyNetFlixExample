@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="@string/nav_menu"
+        android:icon="@drawable/ic_nav_home"/>
+    <item
+        android:id="@+id/favoritesFragment"
+        android:title="@string/nav_favorites"
+        android:icon="@drawable/ic_nav_favorites"/>
+    <item
+        android:id="@+id/galleryFragment"
+        android:title="@string/nav_gallery"
+        android:icon="@drawable/ic_nav_gallery"/>
+    <item
+        android:id="@+id/mapsFragment"
+        android:title="@string/nav_maps"
+        android:icon="@drawable/ic_nav_maps"/>
+
+</menu>
