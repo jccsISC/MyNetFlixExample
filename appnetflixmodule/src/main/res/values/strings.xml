@@ -14,7 +14,39 @@
     <string name="naw_playing">Jugando ahora</string>
     <string name="on_item_click_listener">onItemClickListener no inicializado</string>
 
+    <string name="about">Sobre</string>
+    <string name="actors">Actores</string>
+    <string name="images">Imágenes</string>
+    <string name="reviews">Críticas</string>
+
+    <string name="raiting">Raiting: %s</string>
     <string name="language">Lenguaje original: %s</string>
     <string name="url_img">https://image.tmdb.org/t/p/w500/%s</string>
     <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyAe88CMEDZSzUJq28_ayfp8QSib8jbp8qI</string>
+
+    <string name="author">
+        <font face="roboto_bold" size="25"><b>Autor:</b></font> %s
+    </string>
+    <string name="name">
+        <font face="roboto_bold" size="25"><b>Nombre:</b> </font> %s
+    </string>
+    <string name="user_name">
+        <font face="roboto_bold" size="25"><b>Usuario:</b> </font> %s
+    </string>
+    <string name="rating_user">
+        <font face="roboto_bold" size="25"><b>Raiting:</b> </font> %s
+    </string>
+    <string name="created_content">
+        <font face="roboto_bold" size="25"><b>Publicado:</b> </font> %s
+    </string>
+
+    <string name="total_results">
+        <font face="roboto_bold" size="25"><b>Total de resultados:</b></font>  %s
+    </string>
+
+    <string name="content_example">
+        he latest film in the Marvel Cinematic Universe has arrived with “Shang Chi and The Legend of the Ten Rings”.\r\n\r\nThe film introduces audiences to Shang Chi (Simu Liu); an easygoing San Francisco
+        resident who spends his time parking cars and hanging out with his friend Katy (Awkwafina) and her family.\r\n\r\nLife is steady if unspectacular until he is accosted on a city bus by a group looking to
+        take a pendant his mother gave him. When Shang Chi shocks Katy and the occupants of the bus with his martial arts abilities; he attempts to find his sister Xialing (Meng’er Zhang).
+    </string>
 </resources>

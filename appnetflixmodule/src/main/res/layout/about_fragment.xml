@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/primary_color">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_nav_favorites"
+            app:drawableTint="@color/light_gray"
+            android:drawablePadding="@dimen/padding_8"
+            android:textColor="@color/light_gray"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:textSize="@dimen/size_16"
+            tools:text="6.1 (4123 Reseñas)"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/tvLanguaje"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="8dp"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/size_16"
+            app:drawableStartCompat="@drawable/ic_languaje"
+            app:drawableTint="@color/white"
+            app:layout_constraintStart_toStartOf="@+id/tvRating"
+            app:layout_constraintTop_toBottomOf="@+id/tvRating"
+            tools:text="Language en" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textColor="@color/light_gray"
+            android:textSize="@dimen/size_16"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            tools:text="In the human race, completely lost sight. To survive, people had to find a new way to coexist, build and get food. Everything changes when sighted twins are born in the family of the fearless warrior Baba"
+            app:layout_constraintTop_toBottomOf="@+id/tvLanguaje"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

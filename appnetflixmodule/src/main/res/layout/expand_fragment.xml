@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_primary_dark"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/imgExpand"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/movie_see"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.tistory.zladnrms.roundablelayout.RoundableLayout
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="8dp"
+        app:strokeLineColor="@color/dark_red"
+        app:strokeLineWidth="1dp"
+        app:backgroundColor="@color/primary_color_2"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="@dimen/padding_10"
+        android:foreground="?selectableItemBackgroundBorderless"
+        app:cornerLeftSide="@dimen/corner_radius_20"
+        app:cornerRightSide="@dimen/corner_radius_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="@dimen/width_close_detail"
+            android:layout_height="@dimen/width_close_detail"
+            android:src="@drawable/ic_close"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+    </com.tistory.zladnrms.roundablelayout.RoundableLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

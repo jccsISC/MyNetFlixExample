@@ -9,7 +9,15 @@
         android:id="@+id/homeFragment"
         tools:layout="@layout/fragment_home"
         android:name="com.jccsisc.appnetflixmodule.iu.fragments.home.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment">
+        <action
+            android:id="@+id/action_homeFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.jccsisc.appnetflixmodule.iu.fragments.favorites.FavoritesFragment"
@@ -25,4 +33,31 @@
         android:name="com.jccsisc.appnetflixmodule.iu.fragments.gallery.GalleryFragment"
         android:label="fragment_gallery"
         tools:layout="@layout/fragment_gallery" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        tools:layout="@layout/details_fragment"
+        android:name="com.jccsisc.appnetflixmodule.iu.fragments.details.DetailsFragment"
+        android:label="DetailsFragment">
+        <action
+            android:id="@+id/action_detailsFragment_to_expandFragment"
+            app:destination="@id/expandFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+        <argument
+            android:name="modelMovie"
+            app:argType="com.jccsisc.appnetflixmodule.iu.fragments.home.model.HomeMovieResponse" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/expandFragment"
+        tools:layout="@layout/expand_fragment"
+        android:name="com.jccsisc.appnetflixmodule.iu.fragments.details.fragmentsPager.frames.expand.ExpandFragment"
+        android:label="ExpandFragment" >
+        <argument
+            android:name="image"
+            app:argType="string" />
+    </fragment>
 </navigation>

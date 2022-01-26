@@ -78,7 +78,7 @@
                        android:layout_height="wrap_content"
                        android:text="Actualizar"
                        android:clickable="true"
-                       android:textAllCaps="true"
+                       android:textAllCaps="false"
                        android:foreground="?selectableItemBackgroundBorderless"
                        android:backgroundTint="@color/gray_litte"
                        android:drawableLeft="@drawable/ic_play"
