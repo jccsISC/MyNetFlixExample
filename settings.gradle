@@ -1,0 +1,3 @@
+include ':appnetflixmodule'
+include ':app'
+rootProject.name = "MyNetflixApp"
