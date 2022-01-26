@@ -11,7 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -20,7 +19,6 @@
             android:fitsSystemWindows="true"
             app:layout_collapseMode="parallax"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:contentScrim="@color/color_primary_dark">
 
            <FrameLayout
@@ -36,6 +34,7 @@
                        android:layout_height="350dp"
                        android:layout_marginBottom="15dp"
                        android:src="@drawable/ic_bg_movie"
+                       android:scaleType="fitCenter"
                        app:layout_constraintTop_toTopOf="parent"
                        app:layout_constraintEnd_toEndOf="parent"
                        app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +142,6 @@
                         android:layout_width="@dimen/width_ic_home"
                         android:layout_height="@dimen/width_ic_home"
                         android:src="@drawable/ic_icon_n"
-                        android:layout_marginStart="10dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"/>

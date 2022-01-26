@@ -21,19 +21,30 @@ class MainActivity : AppCompatActivity() {
         mBinding.apply {
 
             val boottomNavigatioView = bottomNavigation
-            val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            val navHostFragment =
+                supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
             val navController = navHostFragment.navController
 
             boottomNavigatioView.setupWithNavController(navController)
 
             navController.addOnDestinationChangedListener { _, destination, _ ->
-                when(destination.id) {
+                when (destination.id) {
                     R.id.mapsFragment -> {
-                        boottomNavigatioView.setBackgroundColor(ContextCompat.getColor(this@MainActivity, R.color.bg_maps))
+                        boottomNavigatioView.setBackgroundColor(
+                            ContextCompat.getColor(
+                                this@MainActivity,
+                                R.color.bg_maps
+                            )
+                        )
                     }
                     else -> {
-                        boottomNavigatioView.setBackgroundColor(ContextCompat.getColor(this@MainActivity, R.color.primary_color))
+                        boottomNavigatioView.setBackgroundColor(
+                            ContextCompat.getColor(
+                                this@MainActivity,
+                                R.color.primary_color
+                            )
+                        )
                     }
                 }
             }

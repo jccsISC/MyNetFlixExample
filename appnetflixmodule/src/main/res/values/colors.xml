@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primary_color">#23222d</color>
+    <color name="primary_color_2">#363543</color>
     <color name="color_primary_dark">#0b0b0e</color>
     <color name="teal_200">#261c1f</color>
     <color name="teal_700">#191a24 </color>

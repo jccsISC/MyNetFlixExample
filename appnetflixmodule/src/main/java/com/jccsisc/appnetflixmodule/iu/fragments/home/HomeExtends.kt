@@ -5,7 +5,9 @@ import com.jccsisc.appnetflixmodule.R
 import com.jccsisc.appnetflixmodule.common.core.request.RequestModel
 import com.jccsisc.appnetflixmodule.common.core.response.GenericResponse
 import com.jccsisc.appnetflixmodule.common.core.status.StatusRequestEnum
+import com.jccsisc.appnetflixmodule.iu.fragments.information.BottomSheetDetailFragment
 import com.jccsisc.appnetflixmodule.iu.fragments.home.adapter.HomeAdapter
+import com.jccsisc.appnetflixmodule.iu.fragments.information.model.InformationModel
 import com.jccsisc.appnetflixmodule.utils.ConstantesObject.now_playing
 import com.jccsisc.appnetflixmodule.utils.ConstantesObject.upcoming
 import com.jccsisc.appnetflixmodule.utils.ConstantesObject.popular
@@ -16,22 +18,13 @@ import com.jccsisc.appnetflixmodule.utils.showView
 
 fun HomeFragment.initElements() {
     mBinding.apply {
-
         viewModel.requestDataUpcoming(upcoming, RequestModel())
-
-        imgFavorite.setOnClickListener {
-            showToast("Agregar a favoritos")
-        }
 
         btnPlay.setOnClickListener {
             viewModel.requestDataUpcoming(upcoming, RequestModel())
             shimmerFrameLayout.showView()
             shimmerFrameLayout.showShimmer(true)
             layoutRv.showView(false)
-        }
-
-        imgInformation.setOnClickListener {
-            showToast("Mostras bottomSheet Con la info")
         }
 
         /*   btnUploadImage.setOnClickListener {
@@ -72,11 +65,34 @@ fun HomeFragment.initObserverMovies() {
                         rvUpcoming.adapter = adapter
 
                         val imageRandom = it.listMovies.random().poster_path
+                        var information = InformationModel()
+                        it.listMovies.forEach {
+                            if (it.poster_path == imageRandom) {
+                                information = InformationModel(
+                                    it.poster_path,
+                                    it.title,
+                                    it.vote_average.toString(),
+                                    it.original_language,
+                                    it.overview ?: "No hay descripción"
+                                )
+                            }
+                        }
 
                         Glide.with(root.context)
                             .load(root.context.getString(R.string.url_img, imageRandom))
                             .centerCrop()
                             .into(mBinding.imgHome)
+
+                        imgFavorite.setOnClickListener {
+                            showToast("Agregar a favoritos")
+                        }
+
+                        imgInformation.setOnClickListener {
+                            BottomSheetDetailFragment(information).show(
+                                requireActivity().supportFragmentManager,
+                                "bottomSheetDialog"
+                            )
+                        }
 
                         adapter.submitList(it.listMovies)
 
@@ -90,7 +106,12 @@ fun HomeFragment.initObserverMovies() {
                                  )
                              findNavController().navigate(action)*/
                         }
-                        viewModel.responseListMoviesUpcoming.postValue(GenericResponse(StatusRequestEnum.NONE, requestData = RequestModel()))
+                        viewModel.responseListMoviesUpcoming.postValue(
+                            GenericResponse(
+                                StatusRequestEnum.NONE,
+                                requestData = RequestModel()
+                            )
+                        )
                     }
                 }
                 StatusRequestEnum.FAILURE -> {
@@ -132,7 +153,12 @@ fun HomeFragment.initObserverMovies() {
                                  )
                              findNavController().navigate(action)*/
                         }
-                        viewModel.responseListMoviesPopular.postValue(GenericResponse(StatusRequestEnum.NONE, requestData = RequestModel()))
+                        viewModel.responseListMoviesPopular.postValue(
+                            GenericResponse(
+                                StatusRequestEnum.NONE,
+                                requestData = RequestModel()
+                            )
+                        )
                     }
                 }
                 StatusRequestEnum.FAILURE -> {
@@ -174,7 +200,12 @@ fun HomeFragment.initObserverMovies() {
                                  )
                              findNavController().navigate(action)*/
                         }
-                        viewModel.responseListMoviesTop.postValue(GenericResponse(StatusRequestEnum.NONE, requestData = RequestModel()))
+                        viewModel.responseListMoviesTop.postValue(
+                            GenericResponse(
+                                StatusRequestEnum.NONE,
+                                requestData = RequestModel()
+                            )
+                        )
                     }
                 }
                 StatusRequestEnum.FAILURE -> {
@@ -214,7 +245,12 @@ fun HomeFragment.initObserverMovies() {
                                  )
                              findNavController().navigate(action)*/
                         }
-                        viewModel.responseListMoviesNowPopular.postValue(GenericResponse(StatusRequestEnum.NONE, requestData = RequestModel()))
+                        viewModel.responseListMoviesNowPopular.postValue(
+                            GenericResponse(
+                                StatusRequestEnum.NONE,
+                                requestData = RequestModel()
+                            )
+                        )
                     }
                 }
                 StatusRequestEnum.FAILURE -> {
