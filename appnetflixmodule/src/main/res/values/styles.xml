@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="tvStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/size_20</item>
+        <item name="android:textColor">@color/gray_litte</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="BtnDialog" parent="Widget.MaterialComponents.Button">
+        <item name="textAllCaps">false</item>
+        <item name="background">@color/primary_color</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="AlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorSurface">@android:color/transparent</item>
+    </style>
+</resources>

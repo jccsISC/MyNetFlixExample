@@ -8,4 +8,11 @@
     <string name="nav_favorites">Favoritos</string>
     <string name="nav_gallery">Galeria</string>
     <string name="nav_maps">Maps</string>
+    <string name="premiere">Estreno</string>
+    <string name="popular">Populares</string>
+    <string name="top">Top</string>
+    <string name="naw_playing">Jugando ahora</string>
+    <string name="on_item_click_listener">onItemClickListener no inicializado</string>
+
+    <string name="url_img">https://image.tmdb.org/t/p/w500/%s</string>
 </resources>
