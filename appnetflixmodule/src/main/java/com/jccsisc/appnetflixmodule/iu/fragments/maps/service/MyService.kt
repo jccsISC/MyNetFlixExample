@@ -70,7 +70,7 @@ class MyService : Service() {
 
                     contador++
                     Log.d(SERVICE_TAG, "Contador: $contador")
-                    postDelayed(this, 1000)
+                    postDelayed(this, 300000)
                     if (contador % 10 == 0) {
                         with(ServiceRemoteRepository()) {
 
@@ -98,7 +98,7 @@ class MyService : Service() {
                 }
             }
 
-            postDelayed(runnable, 1000)
+            postDelayed(runnable, 300000)
         }
     }
 
