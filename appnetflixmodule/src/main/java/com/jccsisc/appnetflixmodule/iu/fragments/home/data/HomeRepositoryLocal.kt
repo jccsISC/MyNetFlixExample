@@ -5,7 +5,7 @@ import com.jccsisc.appnetflixmodule.common.core.request.RequestModel
 import com.jccsisc.appnetflixmodule.common.core.response.GenericResponse
 import com.jccsisc.appnetflixmodule.iu.fragments.home.model.HomeListMoviesResponse
 
-class HomeRepositoryLocal : HomeSource {
+class HomeRepositoryLocal : UsesCases {
 
     override fun getListMoviesPopulars(
         path: String,

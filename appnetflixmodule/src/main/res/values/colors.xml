@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary_color">#23222d</color>
-    <color name="primary_color_2">#363543</color>
-    <color name="color_primary_dark">#0b0b0e</color>
-    <color name="teal_200">#261c1f</color>
+    <color name="primary_color">#131311</color>
+    <color name="primary_color_2">#2d2d2d</color>
+    <color name="bg_primary_color_2">#434141</color>
+    <color name="color_primary_dark">#060909</color>
+    <color name="color_bg_loading">#D7060909</color>
+    <color name="teal_200">#2d2d2d </color>
     <color name="teal_700">#191a24 </color>
     <color name="black">#FF000000</color>
     <color name="bg_maps">#4B000000</color>

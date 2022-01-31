@@ -7,11 +7,11 @@
     <string name="nav_menu">Menu</string>
     <string name="nav_favorites">Favoritos</string>
     <string name="nav_gallery">Galeria</string>
-    <string name="nav_maps">Maps</string>
+    <string name="nav_maps">Mapa</string>
     <string name="premiere">Estreno</string>
     <string name="popular">Populares</string>
     <string name="top">Top</string>
-    <string name="naw_playing">Jugando ahora</string>
+    <string name="most_wanted">Mas buscadas</string>
     <string name="on_item_click_listener">onItemClickListener no inicializado</string>
 
     <string name="about">Sobre</string>
@@ -49,4 +49,25 @@
         resident who spends his time parking cars and hanging out with his friend Katy (Awkwafina) and her family.\r\n\r\nLife is steady if unspectacular until he is accosted on a city bus by a group looking to
         take a pendant his mother gave him. When Shang Chi shocks Katy and the occupants of the bus with his martial arts abilities; he attempts to find his sister Xialing (Meng’er Zhang).
     </string>
+    <string name="see">Ver</string>
+    <string name="update">Actualizar</string>
+    <string name="upload_image">Subir imagen</string>
+    <string name="upload">Guardar</string>
+    <string name="close">Cerrar</string>
+    <string name="error_message">Ocurrió un error</string>
+    <string name="success_message">Operación exitosa</string>
+    <string name="negative">Negar</string>
+    <string name="acept">Aceptar</string>
+
+    <string name="successfully_upload">Se subió correctamente</string>
+    <string name="there_are_no_images_to_show">No hay imagenes para mostrar</string>
+    <string name="error_querying_data">Error al consultar los datos</string>
+    <string name="no_app_found_to_take_the_photo">No se encontró app para tomar la foto</string>
+    <string name="you_need_location_permission">Necesitas permiso de ubicación</string>
+    <string name="acecept_location_permission">Acepta el permiso de ubicación</string>
+    <string name="location_uploaded_successfully">Ubicación cargada correctamente</string>
+    <string name="your_location_could_not_be_uploaded">No se pudo subir tu ubicación</string>
+    <string name="you_need_to_give_location">Necesita dar permisos de ubicación para usar esta funcinalidad</string>
+    <string name="stopped_service">Servicio detenido</string>
+    <string name="service_running">Servicio corriendo...</string>
 </resources>

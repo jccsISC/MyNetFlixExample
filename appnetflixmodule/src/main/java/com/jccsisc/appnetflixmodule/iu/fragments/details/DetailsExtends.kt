@@ -5,9 +5,9 @@ import com.bumptech.glide.Glide
 import com.jccsisc.appnetflixmodule.R
 import com.jccsisc.appnetflixmodule.common.MEnumsTitles
 import com.jccsisc.appnetflixmodule.iu.fragments.details.adapter.ViewPagerAdapter
-import com.jccsisc.appnetflixmodule.iu.fragments.details.fragmentsPager.about.AboutFragment
-import com.jccsisc.appnetflixmodule.iu.fragments.details.fragmentsPager.frames.FrameFragment
-import com.jccsisc.appnetflixmodule.iu.fragments.details.fragmentsPager.reviews.ReviewsFragment
+import com.jccsisc.appnetflixmodule.iu.fragments.fragmentsPager.about.AboutFragment
+import com.jccsisc.appnetflixmodule.iu.fragments.fragmentsPager.frames.FrameFragment
+import com.jccsisc.appnetflixmodule.iu.fragments.fragmentsPager.reviews.ReviewsFragment
 import com.jccsisc.appnetflixmodule.utils.MLambdasObject
 
 fun DetailsFragment.initElements() {

@@ -7,6 +7,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="tvStyleHome" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/size_12</item>
+        <item name="android:textColor">@color/light_gray</item>
+        <item name="android:layout_marginEnd">12dp</item>
+    </style>
+
     <style name="BtnDialog" parent="Widget.MaterialComponents.Button">
         <item name="textAllCaps">false</item>
         <item name="background">@color/primary_color</item>
@@ -46,5 +52,14 @@
 
     <style name="ProgressBarStyle">
         <item name="colorAccent">@color/dark_red</item>
+    </style>
+
+    <style name="ButtonPermission" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">15dp</item>
+        <item name="textAllCaps">true</item>
+        <item name="android:textSize">@dimen/size_16</item>
+        <item name="backgroundTint">@color/color_primary_dark</item>
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/dark_red</item>
     </style>
 </resources>

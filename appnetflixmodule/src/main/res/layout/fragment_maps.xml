@@ -15,4 +15,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <com.tistory.zladnrms.roundablelayout.RoundableLayout
+        android:id="@+id/btnPlayService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:backgroundColor="@android:color/transparent"
+        app:cornerLeftSide="@dimen/corner_radius_20"
+        app:cornerRightSide="@dimen/corner_radius_20"
+        android:layout_marginTop="@dimen/margin_top_10"
+        android:layout_marginStart="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <ImageView
+            android:id="@+id/imgPlayStopService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_service"
+            android:clickable="true"
+            android:padding="@dimen/padding_5"
+            android:foreground="?selectableItemBackgroundBorderless"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:focusable="true" />
+    </com.tistory.zladnrms.roundablelayout.RoundableLayout>
+
+    <TextView
+        android:id="@+id/tvServiceStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_5"
+        android:text="@string/stopped_service"
+        android:textStyle="bold"
+        android:textColor="@color/color_primary_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPlayService"
+        app:layout_constraintStart_toEndOf="@+id/btnPlayService"
+        app:layout_constraintTop_toTopOf="@+id/btnPlayService" />
 </androidx.constraintlayout.widget.ConstraintLayout>

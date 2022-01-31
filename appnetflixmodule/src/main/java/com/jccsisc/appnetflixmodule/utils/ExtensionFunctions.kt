@@ -5,6 +5,8 @@ import android.content.Intent
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.jccsisc.appnetflixmodule.common.core.response.GenericResponse
+import com.jccsisc.appnetflixmodule.common.core.status.StatusRequestEnum
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -32,4 +34,15 @@ fun View.showView(show: Boolean = true) {
 fun dayMonth(date: Date): String {
     val sdf = SimpleDateFormat("dd MMMM", Locale.forLanguageTag("es-MX"))
     return sdf.format(date)
+}
+
+fun randomNumberId() = (10000..99999).random()
+
+fun <S,E,T> GenericResponse<S, E, T>.doRequest(request:T? = null, result:(result: GenericResponse<S, E, T>) -> Unit){
+
+    val modified = GenericResponse<S,E,T>(
+        statusRequest = StatusRequestEnum.LOADING,
+        requestData = request ?: this.requestData)
+    postValue(modified)
+    result.invoke(modified)
 }

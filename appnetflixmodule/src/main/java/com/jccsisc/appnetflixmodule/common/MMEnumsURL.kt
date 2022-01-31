@@ -1,4 +1,4 @@
-package com.jccsisc.moviesmodule.common
+package com.jccsisc.appnetflixmodule.common
 
 enum class MMEnumsURL(val url: String) {
     PATH("upcoming"),

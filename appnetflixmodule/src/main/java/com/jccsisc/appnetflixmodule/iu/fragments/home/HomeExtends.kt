@@ -1,18 +1,17 @@
 package com.jccsisc.appnetflixmodule.iu.fragments.home
 
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.jccsisc.appnetflixmodule.R
 import com.jccsisc.appnetflixmodule.common.core.request.RequestModel
 import com.jccsisc.appnetflixmodule.common.core.response.GenericResponse
 import com.jccsisc.appnetflixmodule.common.core.status.StatusRequestEnum
-import com.jccsisc.appnetflixmodule.iu.fragments.information.BottomSheetDetailFragment
 import com.jccsisc.appnetflixmodule.iu.fragments.home.adapter.HomeAdapter
-import com.jccsisc.appnetflixmodule.iu.fragments.information.model.InformationModel
-import com.jccsisc.appnetflixmodule.utils.ConstantesObject.now_playing
-import com.jccsisc.appnetflixmodule.utils.ConstantesObject.upcoming
-import com.jccsisc.appnetflixmodule.utils.ConstantesObject.popular
-import com.jccsisc.appnetflixmodule.utils.ConstantesObject.top
+import com.jccsisc.appnetflixmodule.iu.fragments.home.model.HomeMovieResponse
+import com.jccsisc.appnetflixmodule.iu.fragments.information.BottomSheetDetailFragment
+import com.jccsisc.appnetflixmodule.utils.ConstantsObject.now_playing
+import com.jccsisc.appnetflixmodule.utils.ConstantsObject.popular
+import com.jccsisc.appnetflixmodule.utils.ConstantsObject.top
+import com.jccsisc.appnetflixmodule.utils.ConstantsObject.upcoming
 import com.jccsisc.appnetflixmodule.utils.DialogObject
 import com.jccsisc.appnetflixmodule.utils.showToast
 import com.jccsisc.appnetflixmodule.utils.showView
@@ -27,27 +26,6 @@ fun HomeFragment.initElements() {
             shimmerFrameLayout.showShimmer(true)
             layoutRv.showView(false)
         }
-
-        /*   btnUploadImage.setOnClickListener {
-               ABottomSheetOptionsImageFragment().show(requireActivity().supportFragmentManager, "imageoption")
-           }
-           btnOpenMap.setOnClickListener {
-               findNavController().navigate(R.id.action_MMenuFragment_to_mapFragment)
-           }*/
-
-        /*val callback: OnBackPressedCallback =
-            object : OnBackPressedCallback(true *//* enabled by default *//*) {
-                override fun handleOnBackPressed() {
-                    viewModel.apply {
-                        when {
-                            isUpComing.value == true ->  requireActivity().finish()
-                            isPopular.value == true -> tabLayout.getTabAt(0)?.select()
-                            isTop.value == true -> tabLayout.getTabAt(0)?.select()
-                        }
-                    }
-                }
-            }
-        requireActivity().onBackPressedDispatcher.addCallback(this@initElements, callback)*/
     }
 }
 
@@ -63,16 +41,13 @@ fun HomeFragment.initObserverMovies() {
                         rvUpcoming.adapter = adapter
 
                         val imageRandom = it.listMovies.random().poster_path
-                        var information = InformationModel()
-                        it.listMovies.forEach {
-                            if (it.poster_path == imageRandom) {
-                                information = InformationModel(
-                                    it.poster_path,
-                                    it.title,
-                                    it.vote_average.toString(),
-                                    it.original_language,
-                                    it.overview ?: "No hay descripción"
-                                )
+                        var information = HomeMovieResponse()
+                        var facorite = HomeMovieResponse()
+
+                        it.listMovies.forEach { movie ->
+                            if (movie.poster_path == imageRandom) {
+                                information = movie
+                                facorite = movie
                             }
                         }
 
@@ -82,13 +57,20 @@ fun HomeFragment.initObserverMovies() {
                             .into(mBinding.imgHome)
 
                         imgFavorite.setOnClickListener {
-                            showToast("Agregar a favoritos")
+                            showToast("Se está trabajando en esta funcionalidad gracias por su comprensión")
+                        }
+
+                        imgHome.setOnClickListener {
+                            BottomSheetDetailFragment(information).show(
+                                requireActivity().supportFragmentManager,
+                                BottomSheetDetailFragment::class.java.simpleName
+                            )
                         }
 
                         imgInformation.setOnClickListener {
                             BottomSheetDetailFragment(information).show(
                                 requireActivity().supportFragmentManager,
-                                "bottomSheetDialog"
+                                BottomSheetDetailFragment::class.java.simpleName
                             )
                         }
 
@@ -97,8 +79,10 @@ fun HomeFragment.initObserverMovies() {
                         viewModel.requestDataPopular(popular, RequestModel())
 
                         adapter.onItemClickListener = { movie ->
-                            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
-                             findNavController().navigate(action)
+                            BottomSheetDetailFragment(movie).show(
+                                requireActivity().supportFragmentManager,
+                                BottomSheetDetailFragment::class.java.simpleName
+                            )
                         }
                         viewModel.responseListMoviesUpcoming.postValue(
                             GenericResponse(
@@ -113,7 +97,12 @@ fun HomeFragment.initObserverMovies() {
                     shimmerFrameLayout.stopShimmer()
 
                     data.errorData?.let {
-                        DialogObject.showDialog(requireActivity(), it)
+                        DialogObject.showDialog(
+                            requireActivity(),
+                            it,
+                            isOk = false,
+                            textDialog = getString(R.string.error_message)
+                        )
                     }
                 }
                 StatusRequestEnum.NONE -> {
@@ -136,8 +125,10 @@ fun HomeFragment.initObserverMovies() {
                         viewModel.requestDataTop(top, RequestModel())
 
                         adapter.onItemClickListener = { movie ->
-                            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
-                            findNavController().navigate(action)
+                            BottomSheetDetailFragment(movie).show(
+                                requireActivity().supportFragmentManager,
+                                BottomSheetDetailFragment::class.java.simpleName
+                            )
                         }
                         viewModel.responseListMoviesPopular.postValue(
                             GenericResponse(
@@ -152,7 +143,12 @@ fun HomeFragment.initObserverMovies() {
                     shimmerFrameLayout.stopShimmer()
 
                     data.errorData?.let {
-                        DialogObject.showDialog(requireActivity(), it)
+                        DialogObject.showDialog(
+                            requireActivity(),
+                            it,
+                            isOk = false,
+                            textDialog = getString(R.string.error_message)
+                        )
                     }
                 }
                 StatusRequestEnum.NONE -> {
@@ -175,8 +171,10 @@ fun HomeFragment.initObserverMovies() {
                         viewModel.requestDataNowPlaying(now_playing, RequestModel())
 
                         adapter.onItemClickListener = { movie ->
-                            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
-                            findNavController().navigate(action)
+                            BottomSheetDetailFragment(movie).show(
+                                requireActivity().supportFragmentManager,
+                                BottomSheetDetailFragment::class.java.simpleName
+                            )
                         }
                         viewModel.responseListMoviesTop.postValue(
                             GenericResponse(
@@ -191,7 +189,12 @@ fun HomeFragment.initObserverMovies() {
                     shimmerFrameLayout.stopShimmer()
 
                     data.errorData?.let {
-                        DialogObject.showDialog(requireActivity(), it)
+                        DialogObject.showDialog(
+                            requireActivity(),
+                            it,
+                            isOk = false,
+                            textDialog = getString(R.string.error_message)
+                        )
                     }
                 }
                 StatusRequestEnum.NONE -> {
@@ -215,8 +218,10 @@ fun HomeFragment.initObserverMovies() {
                         adapter.submitList(it.listMovies)
 
                         adapter.onItemClickListener = { movie ->
-                            val action = HomeFragmentDirections.actionHomeFragmentToDetailsFragment(movie)
-                            findNavController().navigate(action)
+                            BottomSheetDetailFragment(movie).show(
+                                requireActivity().supportFragmentManager,
+                                BottomSheetDetailFragment::class.java.simpleName
+                            )
                         }
                         viewModel.responseListMoviesNowPopular.postValue(
                             GenericResponse(
@@ -231,7 +236,12 @@ fun HomeFragment.initObserverMovies() {
                     shimmerFrameLayout.stopShimmer()
 
                     data.errorData?.let {
-                        DialogObject.showDialog(requireActivity(), it)
+                        DialogObject.showDialog(
+                            requireActivity(),
+                            it,
+                            isOk = false,
+                            textDialog = getString(R.string.error_message)
+                        )
                     }
                 }
                 StatusRequestEnum.NONE -> {

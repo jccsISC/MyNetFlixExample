@@ -46,7 +46,7 @@ class HomeAdapter: ListAdapter<HomeMovieResponse, HomeAdapter.MovieViewHolder>(D
                 .centerCrop()
                 .into(imgMovie)
 
-            cardMovie.animation = AnimationUtils.loadAnimation(root.context, R.anim.slide_card)
+//            cardMovie.animation = AnimationUtils.loadAnimation(root.context, R.anim.slide_card)
 
             root.setOnClickListener {
                 if (::onItemClickListener.isInitialized) {

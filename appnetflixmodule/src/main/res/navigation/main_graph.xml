@@ -54,10 +54,15 @@
     <fragment
         android:id="@+id/expandFragment"
         tools:layout="@layout/expand_fragment"
-        android:name="com.jccsisc.appnetflixmodule.iu.fragments.details.fragmentsPager.frames.expand.ExpandFragment"
+        android:name="com.jccsisc.appnetflixmodule.iu.fragments.fragmentsPager.frames.expand.ExpandFragment"
         android:label="ExpandFragment" >
         <argument
             android:name="image"
             app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/bottomSheetDetailFragment"
+        tools:layout="@layout/bottom_sheet_detail"
+        android:name="com.jccsisc.appnetflixmodule.iu.fragments.information.BottomSheetDetailFragment"
+        android:label="BottomSheetDetailFragment" />
 </navigation>

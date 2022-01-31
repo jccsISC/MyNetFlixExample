@@ -7,10 +7,10 @@ import com.jccsisc.appnetflixmodule.common.core.ValidResponse
 import com.jccsisc.appnetflixmodule.common.core.request.RequestModel
 import com.jccsisc.appnetflixmodule.common.core.response.GenericResponse
 import com.jccsisc.appnetflixmodule.iu.fragments.home.model.HomeListMoviesResponse
-import com.jccsisc.moviesmodule.common.MMEnumsURL
+import com.jccsisc.appnetflixmodule.common.MMEnumsURL
 import retrofit2.Call
 
-class HomeRepositoryRemote : HomeSource {
+class HomeRepositoryRemote : UsesCases {
 
     override fun getListMoviesPopulars(
         path: String,

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "266890991875",
+    "project_id": "mynetjlix",
+    "storage_bucket": "mynetjlix.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:266890991875:android:d3d230df298256b5bcb136",
+        "android_client_info": {
+          "package_name": "com.jccsisc.mynetflixapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "266890991875-tp9i786omj47bt8lgua90t3nvp2dfucd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6CU1kdRrvF4rS8lTCp-mw9MosIf1e_2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "266890991875-tp9i786omj47bt8lgua90t3nvp2dfucd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
